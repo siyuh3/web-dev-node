@@ -1,7 +1,7 @@
 let movies = [
-    {_id: '123', title: 'Aliens', stars: 4.5},
-    {_id: '234', title: 'Terminator', stars: 4.8},
-    {_id: '345', title: 'Avatar', stars: 4.7}
+    {_id: '123', title: 'Aliens', rating: 4.5},
+    {_id: '234', title: 'Terminator', rating: 4.8},
+    {_id: '345', title: 'Avatar', rating: 4.7}
 ];
 
 module.exports = (app) => {
@@ -13,6 +13,7 @@ module.exports = (app) => {
     };
     const createMovie = (req, res) => {
         const movie = req.body;
+        movie._id = (new Date()).getTime() + '';
         movies = [...movies, movie];
         res.json(movies);
     }
