@@ -1,0 +1,23 @@
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+
+> db.movies.insert({title: 'Aliens', rating: 4.5})
+WriteResult({ "nInserted" : 1 })
+
+> db.movies.updateOne({title: 'Avatar'}, {$set:{rating: 4.9}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+> db.movies.updateOne({_id: ObjectId("618708ce2f9dcdbdb306a5d7")}, {$set:{rating: 4.5}});
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+
+> db.movies.deleteOne({_id: ObjectId("618708ce2f9dcdbdb306a5d7")});
+{ "acknowledged" : true, "deletedCount" : 0 }
+
+> db.movies.find();
+{ "_id" : ObjectId("619c21361eb461e5183ff4aa"), "title" : "Aliens", "rating" : 4.5 }
+{ "_id" : ObjectId("619c21901eb461e5183ff4ab"), "title" : "Terminator", "rating" : 4.8 }
+{ "_id" : ObjectId("619c21cd1eb461e5183ff4ac"), "title" : "Avatar", "rating" : 4.9 }
+{ "_id" : ObjectId("619c21ec1eb461e5183ff4ad"), "title" : "Dune", "rating" : 4.9 }
